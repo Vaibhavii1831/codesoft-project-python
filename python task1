@@ -1,0 +1,62 @@
+# Initialize an empty to-do list
+todo_list = {}
+
+# Function to add a task to the to-do list
+def add_task():
+    task = input("Enter a task: ")
+    priority = input("Enter task priority (high, medium, low): ")
+    todo_list[task] = priority
+    print(f"Task '{task}' added to the to-do list.")
+
+# Function to display the to-do list
+def display_tasks():
+    if not todo_list:
+        print("Your to-do list is empty.")
+    else:
+        print("To-Do List:")
+        for task, priority in todo_list.items():
+            print(f"{task} (Priority: {priority})")
+
+# Function to update a task's priority
+def update_priority():
+    task = input("Enter the task you want to update: ")
+    if task in todo_list:
+        new_priority = input("Enter the new priority (high, medium, low): ")
+        todo_list[task] = new_priority
+        print(f"Priority of task '{task}' updated to '{new_priority}'.")
+    else:
+        print(f"Task '{task}' not found in the to-do list.")
+
+# Function to remove a task from the to-do list
+def remove_task():
+    task = input("Enter the task you want to remove: ")
+    if task in todo_list:
+        del todo_list[task]
+        print(f"Task '{task}' removed from the to-do list.")
+    else:
+        print(f"Task '{task}' not found in the to-do list.")
+
+# Main program loop
+while True:
+    print("\nOptions:")
+    print("1. Add a task")
+    print("2. Display tasks")
+    print("3. Update task priority")
+    print("4. Remove a task")
+    print("5. Quit")
+
+    choice = input("Enter your choice (1/2/3/4/5): ")
+
+    if choice == '1':
+        add_task()
+    elif choice == '2':
+        display_tasks()
+    elif choice == '3':
+        update_priority()
+    elif choice == '4':
+        remove_task()
+    elif choice == '5':
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
